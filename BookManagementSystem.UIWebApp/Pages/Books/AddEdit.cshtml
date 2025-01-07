@@ -1,0 +1,82 @@
+﻿@page
+@model BookManagementSystem.UIWebApp.Pages.Books.AddEditModel
+@{
+}
+<h1>@Model.PageTitle</h1>
+
+<form method="post">
+
+    <input type="hidden" asp-for="Book.Id" />
+
+    <div class="form-group">
+        <label>Title</label>
+        <input type="text" class="form-control" asp-for="Book.Title" />
+        <span asp-validation-for="Book.Title" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label>Author</label>
+        <input type="text" class="form-control" asp-for="Book.Author" />
+        <span asp-validation-for="Book.Author" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label>Published Year</label>
+        <input type="number" class="form-control" asp-for="Book.PublishedYear" />
+        <span asp-validation-for="Book.PublishedYear" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label>Price</label>
+        <input type="number" class="form-control" asp-for="Book.Price" />
+        <span asp-validation-for="Book.Price" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label>Discount Percentage</label>
+        <input type="number" class="form-control" asp-for="Book.DiscountPercentage" />
+        <span asp-validation-for="Book.DiscountPercentage" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label>Genre</label>
+        <input type="text" class="form-control" asp-for="Book.Genre" />
+        <span asp-validation-for="Book.Genre" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label>Rating</label>
+        <div class="star-rating" id="rating-container">
+            @for (int i = 1; i <= 5; i++)
+            {
+                <span class="star"
+                      onclick="setRating(@i)"
+                      data-value="@i"
+                      style="cursor: pointer; font-size: 24px; color: @((Model.Book.Rating >= i) ? "gold" : "gray");">
+                    ★
+                </span>
+            }
+        </div>
+        <input type="hidden" id="rating-input" asp-for="Book.Rating" />
+        <span asp-validation-for="Book.Rating" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+
+<script>
+    function setRating(value) {
+        const stars = document.querySelectorAll('.star');
+        document.getElementById('rating-input').value = value;
+
+        stars.forEach((star, index) => {
+            star.style.color = (index < value) ? 'gold' : 'gray';
+        });
+    }
+
+    // Initialize stars on page load for edit functionality
+    document.addEventListener('DOMContentLoaded', function () {
+        const initialRating = parseInt(document.getElementById('rating-input').value || 0);
+        setRating(initialRating);
+    });
+</script>

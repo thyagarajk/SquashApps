@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "BookManagementSystem.API\\BookManagementSystem.API.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "BookManagementSystem.UIWebApp\\BookManagementSystem.UIWebApp.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "BookManagementSystem.UIWebApp/1.0.0": {
+        "runtime": {
+          "BookManagementSystem.UIWebApp.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "BookManagementSystem.UIWebApp/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

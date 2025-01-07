@@ -1,0 +1,21 @@
+﻿@page "/dashboard"
+@using BookManagementSystem.UIBlazor.Models
+@inject HttpClient Http
+
+<div class="container mt-4">
+    <h1>Dashboard</h1>
+    <p>Total Books: @TotalBooks</p>
+    <p>Average Rating: @AverageRating</p>
+</div>
+
+@code {
+    private int TotalBooks;
+    private double AverageRating;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var stats = await Http.GetFromJsonAsync<DashboardStats>("/api/dashboard");
+        TotalBooks = stats.TotalBooks;
+        AverageRating = stats.AverageRating;
+    }
+}
